@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<title>Survivor Apocalyps</title>
+
+<link rel="stylesheet" href="css/style.css">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Orbitron:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+</head>
+<body>
+
+<!-- ================= BACKGROUND ================= -->
+
+<div id="background"></div>
+
+<!-- ================= LOADING ================= -->
+
+<div id="loadingScreen">
+
+    <h1>SURVIVOR APOCALYPS</h1>
+
+    <p>Loading...</p>
+
+</div>
+
+<!-- ================= MAIN ================= -->
+
+<main id="menu">
+
+<!-- ================= HEADER ================= -->
+
+<header id="header">
+
+<div class="logoBox">
+
+<h1>☣ SURVIVOR APOCALYPS</h1>
+
+<p>Endless Zombie Survival</p>
+
+</div>
+
+<div id="playerCard">
+
+<div class="profile">
+
+<div class="avatar">
+
+<img src="assets/unit/unit.png" id="playerSkin">
+
+</div>
+
+<div class="profileInfo">
+
+<h2 id="playerName">Player</h2>
+
+<span>
+Lv.
+<span id="playerLevel">1</span>
+</span>
+
+<p id="xpText">
+
+0 / 100 XP
+
+</p>
+
+</div>
+
+</div>
+
+<div class="resourcePanel">
+
+<div class="resource">
+
+<img src="assets/icons/coin.png">
+
+<span id="coinText">0</span>
+
+</div>
+
+<div class="resource">
+
+<img src="assets/icons/leather.png">
+
+<span id="leatherText">0</span>
+
+</div>
+
+<div class="resource">
+
+<img src="assets/icons/iron.png">
+
+<span id="ironText">0</span>
+
+</div>
+
+<div class="resource">
+
+<img src="assets/icons/crystal.png">
+
+<span id="crystalText">0</span>
+
+</div>
+
+<div class="resource">
+
+<img src="assets/icons/nuke_core.png">
+
+<span id="nukeText">0</span>
+
+</div>
+
+</div>
+
+</div>
+
+</header>
+
+<!-- ================= PLAY ================= -->
+
+<section id="playArea">
+
+<button id="playButton">
+
+START GAME
+
+</button>
+
+</section>
+
+<!-- ================= MENU ================= -->
+
+<section id="menuButtons">
+
+<button id="upgradeButton">
+
+Upgrade
+
+</button>
+
+<button id="shopButton">
+
+Shop
+
+</button>
+
+<button id="milestoneButton">
+
+Milestone
+
+</button>
+
+<button id="redeemButton">
+
+Redeem
+
+</button>
+
+<button id="saveButton">
+
+Save
+
+</button>
+
+<button id="aboutButton">
+
+About
+
+</button>
+
+</section>
+
+</main>
+
+<!-- ====================================================== -->
+<!-- UPGRADE -->
+<!-- ====================================================== -->
+
+<div class="popup hidden" id="upgradePopup">
+
+<div class="window">
+
+<h2>UPGRADE</h2>
+
+<div class="upgradeCard">
+
+<h3>Weapon</h3>
+
+<p>
+Lv.
+<span id="weaponLevel">1</span>
+</p>
+
+<p>
+
+Price :
+
+<span id="weaponPrice">
+
+10
+
+</span>
+
+Coin
+
+</p>
+
+<button id="weaponUpgrade">
+
+Upgrade
+
+</button>
+
+</div>
+
+<div class="upgradeCard">
+
+<h3>Army</h3>
+
+<p>
+
+Lv.
+<span id="armyLevel">1</span>
+
+</p>
+
+<p>
+
+Price :
+
+<span id="armyPrice">
+
+100
+
+</span>
+
+Coin
+
+</p>
+
+<button id="armyUpgrade">
+
+Upgrade
+
+</button>
+
+</div>
+
+<div class="upgradeCard">
+
+<h3>Base HP</h3>
+
+<p>
+
+Lv.
+<span id="baseLevel">1</span>
+
+</p>
+
+<p>
+
+Price :
+
+<span id="basePrice">
+
+250
+
+</span>
+
+Coin
+
+</p>
+
+<button id="baseUpgrade">
+
+Upgrade
+
+</button>
+
+</div>
+
+<div class="upgradeCard">
+
+<h3>Item Chance</h3>
+
+<p>
+
+Lv.
+<span id="chanceLevel">1</span>
+
+</p>
+
+<p>
+
+Price :
+
+<span id="chancePrice">
+
+300
+
+</span>
+
+Coin
+
+</p>
+
+<button id="chanceUpgrade">
+
+Upgrade
+
+</button>
+
+</div>
+
+<button class="closePopup">
+
+Close
+
+</button>
+
+</div>
+
+</div>
+
+<!-- ====================================================== -->
+<!-- SHOP -->
+<!-- ====================================================== -->
+
+<div class="popup hidden" id="shopPopup">
+
+<div class="window">
+
+<h2>SHOP</h2>
+
+<div class="shopItem">
+
+<h3>Airplane</h3>
+
+<p>
+
+Double Army Until Game Over
+
+</p>
+
+<ul>
+
+<li>120 Leather</li>
+
+<li>75 Iron</li>
+
+<li>25 Crystal</li>
+
+<li>3 Nuke Core</li>
+
+<li>2000 Coin</li>
+
+</ul>
+
+<button id="buyAirplane">
+
+Unlock
+
+</button>
+
+</div>
+
+<div class="shopItem">
+
+<h3>Armored Army</h3>
+
+<p>
+
+Damage x3.5
+
+<br>
+
+Base HP x2
+
+</p>
+
+<ul>
+
+<li>100 Leather</li>
+
+<li>100 Iron</li>
+
+<li>70 Crystal</li>
+
+<li>1 Nuke Core</li>
+
+</ul>
+
+<button id="buyArmored">
+
+Unlock
+
+</button>
+
+</div>
+
+<button class="closePopup">
+
+Close
+
+</button>
+
+</div>
+
+</div>
+
+<!-- ====================================================== -->
+<!-- MILESTONE -->
+<!-- ====================================================== -->
+
+<div class="popup hidden" id="milestonePopup">
+
+<div class="window">
+
+<h2>MILESTONE</h2>
+
+<div class="milestoneReward">
+
+<h3>LEVEL 10</h3>
+
+<p>
+
+Starter Pack
+
+</p>
+
+<ul>
+
+<li>500 Coin</li>
+
+<li>30 Leather</li>
+
+<li>15 Iron</li>
+
+<li>5 Crystal</li>
+
+</ul>
+
+<button id="claimLv10">
+
+Claim
+
+</button>
+
+</div>
+
+<div class="milestoneReward">
+
+<h3>LEVEL 25</h3>
+
+<p>
+
+Unlock unit1.png
+
+</p>
+
+<ul>
+
+<li>+5% Damage</li>
+
+<li>1 Nuke Core</li>
+
+</ul>
+
+<button id="claimLv25">
+
+Claim
+
+</button>
+
+</div>
+
+<button class="closePopup">
+
+Close
+
+</button>
+
+</div>
+
+</div>
+
+<!-- ====================================================== -->
+<!-- REDEEM -->
+<!-- ====================================================== -->
+
+<div class="popup hidden" id="redeemPopup">
+
+<div class="window">
+
+<h2>REDEEM CODE</h2>
+
+<input
+type="text"
+id="redeemInput"
+maxlength="30"
+placeholder="ENTER CODE">
+
+<button id="redeemClaim">
+
+CLAIM
+
+</button>
+
+<button class="closePopup">
+
+Close
+
+</button>
+
+</div>
+
+</div>
+
+<!-- ====================================================== -->
+<!-- TOAST -->
+<!-- ====================================================== -->
+
+<div id="toast"></div>
+
+<!-- ====================================================== -->
+<!-- FIREBASE -->
+<!-- ====================================================== -->
+
+<script type="module">
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-app.js";
+
+const firebaseConfig = {
+apiKey: "AIzaSyB_fFqjywlvxJtJF_M4VI8OhRgyUE1qVXs",
+authDomain: "sheeeha-67d46.firebaseapp.com",
+databaseURL: "https://sheeeha-67d46-default-rtdb.asia-southeast1.firebasedatabase.app",
+projectId: "sheeeha-67d46",
+storageBucket: "sheeeha-67d46.firebasestorage.app",
+messagingSenderId: "203910243490",
+appId: "1:203910243490:web:d7ed3fe0fd8edaccf0a3fb"
+};
+
+window.firebaseApp = initializeApp(firebaseConfig);
+
+</script>
+
+<script type="module" src="js/main.js"></script>
+
+</body>
+</html>
