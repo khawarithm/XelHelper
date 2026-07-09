@@ -1,0 +1,17 @@
+{
+  "name": "Survivor Apocalyps: Tactical Defense",
+  "short_name": "SurvivorApocalyps",
+  "description": "Pertahankan pangkalan militer dari invasi zombie zombie DOM murni.",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#1e1e19",
+  "theme_color": "#4b5320",
+  "orientation": "landscape",
+  "icons": [
+    {
+      "src": "assets/unit.png",
+      "sizes": "64x64",
+      "type": "image/png"
+    }
+  ]
+}
