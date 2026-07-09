@@ -1,163 +1,79 @@
 <!DOCTYPE html>
 <html lang="id">
-
 <head>
-
-<meta charset="UTF-8">
-
-<meta name="viewport"
-content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-
-<title>About - Survivor Apocalyps</title>
-
-<link rel="stylesheet" href="css/style.css">
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Orbitron:wght@400;600;700&display=swap" rel="stylesheet">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Survivor Apocalyps - Credits & About</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
-
 <body>
 
-<!-- ================= BACKGROUND ================= -->
+    <div id="about-container" class="menu-wrapper">
+        
+        <header class="player-header system-header">
+            <div class="player-profile">
+                <span class="menu-title-text">MILITARY INTELLIGENCE REPORT</span>
+            </div>
+            <button id="btn-back-lobby" class="btn-action btn-back">← LOBBY</button>
+        </header>
 
-<div id="background"></div>
+        <main class="lobby-content about-content">
+            
+            <section class="resources-panel about-info-box">
+                <div class="stats-box">
+                    <h3>OPERATION: SURVIVOR APOCALYPS</h3>
+                    <p class="about-description">
+                        Sebuah simulasi pertahanan pangkalan militer tingkat tinggi melawan invasi bio-hazard regional skala penuh. 
+                        Pertahankan barikade, kelola sumber daya material, tingkatkan persenjataan, koordinasikan sinergi peleton, 
+                        dan netralisir ancaman subjek Boss di setiap wave tak terbatas.
+                    </p>
+                </div>
+                
+                <div class="stats-box system-specs">
+                    <h3>TACTICAL SPECIFICATIONS</h3>
+                    <ul>
+                        <li>Engine: <strong>Vanilla JS (ES6+) DOM</strong></li>
+                        <li>Target Frame Rate: <strong>60 FPS</strong></li>
+                        <li>Storage Sync: <strong>Smart Sync (Local & Cloud)</strong></li>
+                        <li>Aspect Ratio: <strong>16:9 Landscape</strong></li>
+                    </ul>
+                </div>
+            </section>
 
-<!-- ================= ABOUT ================= -->
+            <section class="nav-panel credits-panel">
+                <div class="stats-box credits-box">
+                    <h3>HONORARY COMMANDERS & CREDITS</h3>
+                    
+                    <div class="credit-group unique-tribute">
+                        <span class="credit-role">SUPREME CREATOR</span>
+                        <h2 class="credit-name">Allah SWT (My God)</h2>
+                        <p class="credit-sub">Segala puji dan syukur atas kekuatan, akal, dan keberkahan hidup.</p>
+                    </div>
 
-<main id="aboutPage">
+                    <div class="credit-team-grid">
+                        <div class="credit-group">
+                            <span class="credit-role">CORE PROGRAMMER</span>
+                            <h2 class="credit-name">Axel</h2>
+                        </div>
+                        <div class="credit-group">
+                            <span class="credit-role">VISUAL DESIGNER</span>
+                            <h2 class="credit-name">Jaysen</h2>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
 
-<h1>☣ SURVIVOR APOCALYPS</h1>
+        <footer class="lobby-footer">
+            <p>Survivor Apocalyps v1.0.0 © 2026. All Tactical Rights Reserved.</p>
+        </footer>
+    </div>
 
-<p class="version">
-Version 1.0 Alpha
-</p>
-
-<section class="aboutCard">
-
-<h2>Tentang Game</h2>
-
-<p>
-Survivor Apocalyps adalah game web bertema zombie survival dengan sistem
-Endless Wave. Pemain harus mempertahankan Base dari serangan zombie,
-mengumpulkan Coin, XP, Material, membuka Skill permanen, dan terus
-bertahan selama mungkin.
-</p>
-
-</section>
-
-<section class="aboutCard">
-
-<h2>Fitur</h2>
-
-<ul>
-
-<li>✔ Endless Wave</li>
-
-<li>✔ Boss setiap 10 Wave</li>
-
-<li>✔ Upgrade Permanen</li>
-
-<li>✔ Material Drop</li>
-
-<li>✔ Skill Airplane</li>
-
-<li>✔ Armored Army</li>
-
-<li>✔ Firebase Cloud Save</li>
-
-<li>✔ Offline Progress (LocalStorage)</li>
-
-</ul>
-
-</section>
-
-<section class="aboutCard">
-
-<h2>Credits</h2>
-
-<div class="credit">
-
-<h3>1. Allah SWT</h3>
-
-<p>My God</p>
-
-</div>
-
-<div class="credit">
-
-<h3>2. Axel</h3>
-
-<p>Coder</p>
-
-</div>
-
-<div class="credit">
-
-<h3>3. Jaysen</h3>
-
-<p>Designer</p>
-
-</div>
-
-</section>
-
-<section class="aboutCard">
-
-<h2>Special Thanks</h2>
-
-<p>
-
-Terima kasih kepada semua yang telah mendukung pengembangan
-Survivor Apocalyps.
-
-</p>
-
-</section>
-
-<div class="aboutButtons">
-
-<button id="moreButton">
-
-Selengkapnya
-
-</button>
-
-<button id="backButton">
-
-Kembali
-
-</button>
-
-</div>
-
-</main>
-
-<script>
-
-document
-.getElementById("backButton")
-.onclick = () => {
-
-location.href = "index.html";
-
-};
-
-document
-.getElementById("moreButton")
-.onclick = () => {
-
-window.open(
-"https://xel-sosmed.vercel.app",
-"_blank"
-);
-
-};
-
-</script>
-
+    <script>
+        // Logika navigasi sederhana kembali ke Lobby utama
+        document.getElementById('btn-back-lobby').addEventListener('click', () => {
+            window.location.href = 'index.html';
+        });
+    </script>
 </body>
-
 </html>

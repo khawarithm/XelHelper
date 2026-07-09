@@ -1,368 +1,95 @@
 <!DOCTYPE html>
 <html lang="id">
-
 <head>
-
-<meta charset="UTF-8">
-
-<meta name="viewport"
-content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
-
-<title>Survivor Apocalyps - Battle</title>
-
-<link rel="stylesheet" href="css/style.css">
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
-<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Orbitron:wght@400;600;700;800&display=swap" rel="stylesheet">
-
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Survivor Apocalyps - Battle Arena</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/game.css">
 </head>
-
 <body>
 
-<!--====================================================-->
-<!-- BACKGROUND -->
-<!--====================================================-->
-
-<div id="gameBackground">
-
-<img src="assets/bg/bg.png" alt="Background">
-
-</div>
-
-<!--====================================================-->
-<!-- HUD -->
-<!--====================================================-->
-
-<header id="hud">
-
-<div class="hudLeft">
-
-<div class="hudBox">
-
-Wave
-
-<span id="waveText">
-
-1
-
-</span>
-
-</div>
-
-<div class="hudBox">
-
-Zombie
-
-<span id="zombieLeft">
-
-0
-
-</span>
-
-</div>
-
-</div>
-
-<div class="hudCenter">
-
-<div class="hudBox">
-
-Base HP
-
-<span id="baseHP">
-
-100
-
-</span>
-
-</div>
-
-<div class="hudBox">
-
-XP
-
-<span id="battleXP">
-
-0
-
-</span>
-
-</div>
-
-</div>
-
-<div class="hudRight">
-
-<div class="hudResource">
-
-<img src="assets/icons/coin.png">
-
-<span id="coinText">
-
-0
-
-</span>
-
-</div>
-
-</div>
-
-</header>
-
-<!--====================================================-->
-<!-- GAME AREA -->
-<!--====================================================-->
-
-<main id="battlefield">
-
-<!-- BASE -->
-
-<div id="baseWall">
-
-<div id="baseHealthBar">
-
-<div id="baseHealthFill"></div>
-
-</div>
-
-</div>
-
-<!-- SOLDIER CONTAINER -->
-
-<div id="soldierContainer">
-
-<!-- Soldier dibuat otomatis oleh JS -->
-
-</div>
-
-<!-- BULLET CONTAINER -->
-
-<div id="bulletContainer">
-
-<!-- Bullet dibuat otomatis -->
-
-</div>
-
-<!-- ZOMBIE CONTAINER -->
-
-<div id="zombieContainer">
-
-<!-- Zombie dibuat otomatis -->
-
-</div>
-
-<!-- PARTICLE -->
-
-<div id="particleContainer">
-
-</div>
-
-<!-- EFFECT -->
-
-<div id="effectContainer">
-
-</div>
-
-</main>
-
-<!--====================================================-->
-<!-- SKILL BAR -->
-<!--====================================================-->
-
-<section id="skillBar">
-
-<button id="airplaneSkill">
-
-✈ AIRPLANE
-
-</button>
-
-<button id="armoredSkill">
-
-🛡 ARMORED
-
-</button>
-
-<button id="pauseGame">
-
-Ⅱ
-
-</button>
-
-</section>
-
-<!--====================================================-->
-<!-- BOSS ALERT -->
-<!--====================================================-->
-
-<div id="bossWarning" class="hidden">
-
-⚠ BOSS INCOMING ⚠
-
-</div>
-
-<!--====================================================-->
-<!-- WAVE CLEAR -->
-<!--====================================================-->
-
-<div id="waveClear" class="hidden">
-
-<h1>
-
-WAVE CLEAR
-
-</h1>
-
-<p id="rewardText">
-
-+0 Coin
-
-</p>
-
-</div>
-
-<!--====================================================-->
-<!-- GAME OVER -->
-<!--====================================================-->
-
-<div id="gameOver" class="hidden">
-
-<div class="gameOverWindow">
-
-<h1>
-
-GAME OVER
-
-</h1>
-
-<p>
-
-Highest Wave
-
-<span id="highestWave">
-
-1
-
-</span>
-
-</p>
-
-<p>
-
-Coins Earned
-
-<span id="earnedCoin">
-
-0
-
-</span>
-
-</p>
-
-<p>
-
-XP Earned
-
-<span id="earnedXP">
-
-0
-
-</span>
-
-</p>
-
-<button id="retryButton">
-
-Retry
-
-</button>
-
-<button id="menuButton">
-
-Main Menu
-
-</button>
-
-</div>
-
-</div>
-
-<!--====================================================-->
-<!-- PAUSE -->
-<!--====================================================-->
-
-<div id="pauseMenu" class="hidden">
-
-<div class="pauseWindow">
-
-<h2>
-
-PAUSED
-
-</h2>
-
-<button id="resumeButton">
-
-Resume
-
-</button>
-
-<button id="saveBattle">
-
-Save
-
-</button>
-
-<button id="exitBattle">
-
-Exit
-
-</button>
-
-</div>
-
-</div>
-
-<!--====================================================-->
-<!-- SCREEN SHAKE -->
-<!--====================================================-->
-
-<div id="screenShake"></div>
-
-<!--====================================================-->
-<!-- FIREBASE -->
-<!--====================================================-->
-
-<script type="module">
-
-import { initializeApp } from "https://www.gstatic.com/firebasejs/12.15.0/firebase-app.js";
-
-const firebaseConfig = {
-
-apiKey: "AIzaSyB_fFqjywlvxJtJF_M4VI8OhRgyUE1qVXs",
-
-authDomain: "sheeeha-67d46.firebaseapp.com",
-
-databaseURL: "https://sheeeha-67d46-default-rtdb.asia-southeast1.firebasedatabase.app",
-
-projectId: "sheeeha-67d46",
-
-storageBucket: "sheeeha-67d46.firebasestorage.app",
-
-messagingSenderId: "203910243490",
-
-appId: "1:203910243490:web:d7ed3fe0fd8edaccf0a3fb"
-
-};
-
-window.firebaseApp = initializeApp(firebaseConfig);
-
-</script>
-
-<script type="module" src="js/game.js"></script>
-
+    <div id="game-container" class="game-wrapper">
+        
+        <header class="game-hud">
+            <div class="hud-wave">
+                <span class="hud-label">WAVE</span>
+                <span id="current-wave-display" class="hud-value">1</span>
+            </div>
+
+            <div class="hud-hp-container">
+                <div class="hp-bar-wrapper">
+                    <div id="hp-bar-fill" class="hp-bar-fill" style="width: 100%;"></div>
+                    <span id="hp-text" class="bar-text">500 / 500 HP</span>
+                </div>
+            </div>
+
+            <div class="hud-match-stats">
+                <div class="hud-stat-item">
+                    <img src="assets/coin.png" alt="Coin" class="icon-hud">
+                    <span id="match-coin">0</span>
+                </div>
+                <div class="hud-stat-item">
+                    <span class="hud-label">KILLS:</span>
+                    <span id="match-kills" class="hud-value">0</span>
+                </div>
+            </div>
+
+            <button id="btn-pause" class="btn-pause-hud">||</button>
+        </header>
+
+        <div id="boss-warning" class="boss-warning-banner hidden">
+            <div class="warning-flash"></div>
+            <h2 class="warning-text">WARNING! BOSS APPROACHING</h2>
+        </div>
+
+        <main id="battlefield" class="battle-arena-field">
+            
+            <section id="defense-zone" class="defense-zone">
+                <div id="player-base" class="base-object">
+                    </div>
+                
+                <div id="army-spawn-lane" class="army-lane">
+                    </div>
+            </section>
+
+            <section id="invasion-zone" class="invasion-zone">
+                <div id="zombie-spawn-lane" class="zombie-lane">
+                    </div>
+            </section>
+
+        </main>
+
+        <div id="pause-menu" class="overlay-panel hidden">
+            <div class="overlay-content">
+                <h2>GAME PAUSED</h2>
+                <button id="btn-resume" class="btn-primary">RESUME</button>
+                <button id="btn-quit-to-lobby" class="btn-danger">RETREAT TO LOBBY</button>
+            </div>
+        </div>
+
+        <div id="game-over-screen" class="overlay-panel hidden">
+            <div class="overlay-content game-over-box">
+                <h1 class="text-danger-flash">BASE DESTROYED</h1>
+                <p class="game-over-title">GAME OVER</p>
+                
+                <div class="game-over-stats">
+                    <div class="go-stat-row">Wave Reached: <span id="go-wave" class="text-highlight">0</span></div>
+                    <div class="go-stat-row">Coins Earned: <span id="go-coin" class="text-highlight">0</span></div>
+                    <div class="go-stat-row">XP Gained: <span id="go-xp" class="text-highlight">0</span></div>
+                </div>
+
+                <div class="game-over-actions">
+                    <button id="btn-restart" class="btn-primary btn-large">PLAY AGAIN</button>
+                    <button id="btn-go-lobby" class="btn-secondary">BACK TO LOBBY</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="js/main.js" defer></script>
+    <script src="js/game.js" defer></script>
+    <script src="js/ui.js" defer></script>
 </body>
-
 </html>
