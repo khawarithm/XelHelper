@@ -1,0 +1,323 @@
+/* ==========================================================================
+   GAME ARENA & BACKGROUND
+   ========================================================================== */
+.game-wrapper {
+    width: 100%;
+    max-width: 900px;
+    height: 100%;
+    max-height: 506px;
+    background-color: var(--color-olive-dark);
+    /* Menggunakan background stage bgs.png sesuai struktur aset */
+    background-image: url('../assets/bgs.png'); 
+    background-size: cover;
+    background-position: bottom;
+    position: relative;
+    overflow: hidden; /* Pastikan objek (zombie/peluru) tidak keluar batas (bocor) */
+    border: var(--border-pixel);
+    box-shadow: var(--box-shadow-pixel);
+}
+
+/* ==========================================================================
+   HUD (HEADS-UP DISPLAY)
+   ========================================================================== */
+.game-hud {
+    position: absolute;
+    top: 0; left: 0; width: 100%;
+    height: 50px;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 10px;
+    border-bottom: 2px solid var(--color-khaki-dark);
+    z-index: 50; /* Selalu di atas objek game */
+}
+
+.hud-wave, .hud-match-stats {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 1rem;
+    color: var(--color-khaki-light);
+}
+
+.hud-label {
+    font-size: 0.7rem;
+    color: var(--color-khaki-dark);
+}
+
+.hud-value {
+    color: var(--color-gold);
+    font-size: 1.2rem;
+}
+
+.icon-hud {
+    width: 18px; height: 18px;
+}
+
+.hud-stat-item {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background-color: rgba(44, 53, 28, 0.8);
+    padding: 2px 8px;
+    border: 1px solid var(--color-khaki-dark);
+}
+
+/* Base HP Bar */
+.hud-hp-container {
+    flex: 1;
+    margin: 0 15px;
+    max-width: 300px;
+}
+
+.hp-bar-wrapper {
+    width: 100%; height: 20px;
+    background-color: #333;
+    border: 2px solid #000;
+    position: relative;
+}
+
+.hp-bar-fill {
+    height: 100%;
+    background-color: #3cb371; /* Hijau saat sehat */
+    transition: width 0.2s ease-out, background-color 0.3s;
+}
+
+/* Warna merah menyala saat HP kritis, diatur via JS nanti */
+.hp-bar-fill.critical {
+    background-color: var(--color-danger);
+    animation: flash-hp 0.5s infinite alternate;
+}
+
+@keyframes flash-hp {
+    0% { opacity: 1; }
+    100% { opacity: 0.7; }
+}
+
+.btn-pause-hud {
+    background-color: var(--color-olive-dark);
+    color: var(--color-khaki);
+    border: 2px solid var(--color-khaki-dark);
+    width: 35px; height: 35px;
+    font-size: 1.2rem;
+    padding: 0;
+}
+
+/* ==========================================================================
+   BATTLEFIELD ZONES
+   ========================================================================== */
+.battle-arena-field {
+    position: absolute;
+    top: 50px; /* Di bawah HUD */
+    bottom: 0; left: 0; right: 0;
+    display: flex;
+}
+
+.defense-zone {
+    width: 15%; /* Lebar area Base */
+    position: relative;
+    border-right: 2px dashed rgba(255, 255, 255, 0.2);
+}
+
+.invasion-zone {
+    width: 85%;
+    position: relative;
+}
+
+/* ==========================================================================
+   GAME OBJECTS (DOM ENTITIES)
+   Catatan Performa: Menggunakan "transform" untuk pergerakan agar diproses GPU
+   ========================================================================== */
+.base-object {
+    position: absolute;
+    bottom: 10%;
+    left: 0;
+    width: 100%;
+    height: 60%;
+    background-image: url('../assets/bgui.png'); /* Placeholder visual base */
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: bottom left;
+}
+
+/* Kontainer lajur agar objek sejajar */
+.army-lane, .zombie-lane {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+}
+
+/* Kelas generik untuk Tentara */
+.soldier-unit {
+    position: absolute;
+    width: 32px; height: 32px;
+    background-image: url('../assets/unit.png');
+    background-size: cover;
+    /* JS akan menempatkan posisi vertikal (top/bottom) secara random/grid */
+}
+
+/* Kelas generik untuk Zombie */
+.zombie-unit {
+    position: absolute;
+    width: 32px; height: 32px;
+    background-image: url('../assets/z.png');
+    background-size: cover;
+    will-change: transform; /* Hinting ke browser untuk optimasi animasi */
+    /* JS akan memanipulasi transform: translateX() */
+}
+
+.zombie-boss {
+    width: 48px; height: 48px; /* 150% dari 32px */
+    filter: drop-shadow(0 0 5px var(--color-danger));
+}
+
+/* Efek damage (hit) pada musuh */
+.zombie-hit {
+    filter: brightness(2) sepia(1) hue-rotate(-50deg) saturate(5);
+}
+
+/* Peluru (Proyektil) */
+.bullet {
+    position: absolute;
+    width: 8px; height: 3px;
+    background-color: var(--color-gold);
+    box-shadow: 0 0 3px #fff;
+    will-change: transform;
+}
+
+/* Particle efek Zombie Mati */
+.particle-death {
+    position: absolute;
+    width: 15px; height: 15px;
+    background-image: url('../assets/bz.png'); /* Blood/Bone asset */
+    background-size: cover;
+    opacity: 0.8;
+    pointer-events: none;
+    animation: fade-out 1s forwards;
+}
+
+@keyframes fade-out {
+    0% { opacity: 0.8; transform: scale(1); }
+    100% { opacity: 0; transform: scale(1.5) translateY(-10px); }
+}
+
+/* ==========================================================================
+   VISUAL EFFECTS (VFX)
+   ========================================================================== */
+/* Banners & Flashes */
+.boss-warning-banner {
+    position: absolute;
+    top: 30%; left: 0; width: 100%;
+    text-align: center;
+    z-index: 100;
+}
+
+.warning-flash {
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    background-color: rgba(139, 0, 0, 0.4);
+    pointer-events: none;
+    animation: pulse-flash 0.5s infinite alternate;
+}
+
+.warning-text {
+    position: relative;
+    font-size: 2.5rem;
+    color: var(--color-danger);
+    text-shadow: 2px 2px 0 #000, -2px -2px 0 #fff;
+    letter-spacing: 2px;
+    z-index: 101;
+}
+
+@keyframes pulse-flash {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+/* Screen Shake untuk kemunculan Boss */
+.screen-shake {
+    animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both;
+}
+
+@keyframes shake {
+    10%, 90% { transform: translate3d(-2px, 0, 0); }
+    20%, 80% { transform: translate3d(2px, 0, 0); }
+    30%, 50%, 70% { transform: translate3d(-4px, 0, 0); }
+    40%, 60% { transform: translate3d(4px, 0, 0); }
+}
+
+/* Efek Nuke */
+.nuke-flash {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-color: #fff;
+    z-index: 200;
+    pointer-events: none;
+    animation: nuke-fade 1.5s forwards;
+}
+
+@keyframes nuke-fade {
+    0% { opacity: 1; }
+    100% { opacity: 0; }
+}
+
+/* ==========================================================================
+   OVERLAYS (Pause & Game Over)
+   ========================================================================== */
+.overlay-panel {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-color: rgba(0, 0, 0, 0.85);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 150;
+}
+
+.overlay-content {
+    background-color: var(--color-bg-dark);
+    padding: 20px;
+    border: 4px solid var(--color-khaki-dark);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    min-width: 300px;
+}
+
+.overlay-content h2 {
+    color: var(--color-khaki);
+    border-bottom: 2px dashed var(--color-olive);
+    padding-bottom: 10px;
+}
+
+/* Spesifik Game Over Box */
+.game-over-box {
+    border-color: var(--color-danger);
+}
+
+.game-over-title {
+    font-size: 1.5rem;
+    color: var(--color-text);
+    margin-bottom: 10px;
+}
+
+.game-over-stats {
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 10px;
+    border: 1px solid var(--color-olive);
+    text-align: left;
+    margin-bottom: 15px;
+}
+
+.go-stat-row {
+    font-size: 1rem;
+    margin: 5px 0;
+    color: var(--color-khaki-light);
+}
+
+.game-over-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}

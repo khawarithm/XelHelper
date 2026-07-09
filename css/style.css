@@ -1,2565 +1,418 @@
-/*==========================================================
-    SURVIVOR APOCALYPS
-    STYLE.CSS
-    PART 1
-==========================================================*/
-
-/*==========================================================
-ROOT
-==========================================================*/
-
-:root{
-
---bg:#2e2d22;
---bg2:#3d3b2b;
---panel:#4b4833;
---panel2:#605b42;
-
---khaki:#bca66a;
---gold:#ffca55;
---green:#59c84b;
---red:#d64545;
---white:#f4f4f4;
---gray:#c7c7c7;
-
---shadow:0 0 12px rgba(0,0,0,.45);
---radius:14px;
-
---transition:.25s;
-
---font-main:"Orbitron",sans-serif;
---font-pixel:"Press Start 2P",cursive;
-
-}
-
-/*==========================================================
-RESET
-==========================================================*/
-
-*{
-
-margin:0;
-padding:0;
-box-sizing:border-box;
-
--webkit-tap-highlight-color:transparent;
-
-}
-
-html{
-
-width:100%;
-height:100%;
-
-}
-
-body{
-
-width:100vw;
-height:100vh;
-
-overflow:hidden;
-
-background:#1b1b1b;
-
-font-family:var(--font-main);
-
-color:var(--white);
-
-user-select:none;
-
-}
-
-/*==========================================================
-BACKGROUND
-==========================================================*/
-
-#background{
-
-position:fixed;
-
-left:0;
-top:0;
-
-width:100%;
-height:100%;
-
-background:
-
-linear-gradient(
-rgba(0,0,0,.45),
-rgba(0,0,0,.55)
-),
-
-url("../assets/bg/bgs.png");
-
-background-size:cover;
-background-position:center;
-background-repeat:no-repeat;
-
-z-index:-10;
-
-}
-
-/*==========================================================
-LOADING
-==========================================================*/
-
-#loadingScreen{
-
-position:fixed;
-
-inset:0;
-
-display:flex;
-
-flex-direction:column;
-
-justify-content:center;
-
-align-items:center;
-
-gap:25px;
-
-background:#1d1d1d;
-
-z-index:9999;
-
-}
-
-#loadingScreen h1{
-
-font-family:var(--font-pixel);
-
-font-size:20px;
-
-color:var(--gold);
-
-text-align:center;
-
-}
-
-#loadingScreen p{
-
-font-size:15px;
-
-color:var(--gray);
-
-}
-
-/*==========================================================
-MAIN MENU
-==========================================================*/
-
-#menu{
-
-width:100%;
-height:100%;
-
-display:flex;
-
-flex-direction:column;
-
-justify-content:space-between;
-
-padding:18px;
-
-}
-
-/*==========================================================
-HEADER
-==========================================================*/
-
-#header{
-
-display:flex;
-
-justify-content:space-between;
-
-align-items:flex-start;
-
-gap:18px;
-
-}
-
-/*==========================================================
-LOGO
-==========================================================*/
-
-.logoBox{
-
-display:flex;
-
-flex-direction:column;
-
-gap:10px;
-
-}
-
-.logoBox h1{
-
-font-size:30px;
-
-color:var(--gold);
-
-text-shadow:
-
-2px 2px #000,
-
-0 0 10px rgba(255,202,85,.4);
-
-}
-
-.logoBox p{
-
-font-size:14px;
-
-color:var(--gray);
-
-}
-
-/*==========================================================
-PLAYER CARD
-==========================================================*/
-
-#playerCard{
-
-display:flex;
-
-flex-direction:column;
-
-gap:12px;
-
-background:rgba(40,40,40,.75);
-
-padding:15px;
-
-border-radius:var(--radius);
-
-backdrop-filter:blur(5px);
-
-box-shadow:var(--shadow);
-
-min-width:340px;
-
-}
-
-/*==========================================================
-PROFILE
-==========================================================*/
-
-.profile{
-
-display:flex;
-
-align-items:center;
-
-gap:15px;
-
-}
-
-.avatar{
-
-width:70px;
-height:70px;
-
-background:var(--panel);
-
-border-radius:12px;
-
-display:flex;
-
-justify-content:center;
-
-align-items:center;
-
-overflow:hidden;
-
-}
-
-.avatar img{
-
-width:90%;
-height:90%;
-
-object-fit:contain;
-
-image-rendering:pixelated;
-
-}
-
-.profileInfo{
-
-display:flex;
-
-flex-direction:column;
-
-gap:7px;
-
-}
-
-.profileInfo h2{
-
-font-size:20px;
-
-color:var(--gold);
-
-}
-
-.profileInfo span{
-
-font-size:15px;
-
-}
-
-#xpText{
-
-font-size:13px;
-
-color:var(--green);
-
-}
-
-/*==========================================================
-RESOURCE PANEL
-==========================================================*/
-
-.resourcePanel{
-
-display:grid;
-
-grid-template-columns:repeat(5,1fr);
-
-gap:10px;
-
-}
-
-.resource{
-
-display:flex;
-
-align-items:center;
-
-justify-content:center;
-
-gap:8px;
-
-padding:8px;
-
-background:rgba(255,255,255,.05);
-
-border-radius:10px;
-
-}
-
-.resource img{
-
-width:26px;
-
-height:26px;
-
-object-fit:contain;
-
-image-rendering:pixelated;
-
-}
-
-.resource span{
-
-font-size:15px;
-
-font-weight:bold;
-
-}
-
-/*==========================================================
-PLAY AREA
-==========================================================*/
-
-#playArea{
-
-display:flex;
-
-justify-content:center;
-
-align-items:center;
-
-flex:1;
-
-}
-
-/*==========================================================
-MAIN BUTTON
-==========================================================*/
-
-#playButton{
-
-width:340px;
-
-height:85px;
-
-border:none;
-
-border-radius:18px;
-
-background:linear-gradient(
-
-180deg,
-
-#e1b84f,
-
-#b78628
-
-);
-
-font-size:24px;
-
-font-weight:bold;
-
-font-family:var(--font-main);
-
-color:#222;
-
-cursor:pointer;
-
-transition:var(--transition);
-
-box-shadow:
-
-0 8px 0 #7b5b1d,
-
-0 0 18px rgba(255,200,50,.35);
-
-}
-
-#playButton:hover{
-
-transform:translateY(-4px);
-
-}
-
-#playButton:active{
-
-transform:translateY(4px);
-
-box-shadow:
-
-0 2px 0 #7b5b1d;
-
-}
-
-/*==========================================================
-MENU BUTTONS
-==========================================================*/
-
-#menuButtons{
-
-display:grid;
-
-grid-template-columns:repeat(3,1fr);
-
-gap:18px;
-
-margin-top:15px;
-
-}
-
-#menuButtons button{
-
-height:70px;
-
-border:none;
-
-border-radius:14px;
-
-background:var(--panel);
-
-color:var(--white);
-
-font-size:18px;
-
-font-family:var(--font-main);
-
-cursor:pointer;
-
-transition:var(--transition);
-
-box-shadow:var(--shadow);
-
-}
-
-#menuButtons button:hover{
-
-background:var(--panel2);
-
-transform:translateY(-3px);
-
-}
-
-#menuButtons button:active{
-
-transform:scale(.96);
-
-}
-
-/*==========================================================
-COMMON BUTTON
-==========================================================*/
-
-button{
-
-outline:none;
-
-}
-
-button:disabled{
-
-opacity:.5;
-
-pointer-events:none;
-
-}
-
-/*==========================================================
-UTILITY
-==========================================================*/
-
-.hidden{
-
-display:none !important;
-
-}
-
-.center{
-
-display:flex;
-
-justify-content:center;
-
-align-items:center;
-
-}
-
-.flex{
-
-display:flex;
-
-}
-
-.column{
-
-flex-direction:column;
-
-}
-
-.row{
-
-flex-direction:row;
-
-}/*==========================================================
-    SURVIVOR APOCALYPS
-    STYLE.CSS
-    PART 2
-==========================================================*/
-
-/*==========================================================
-POPUP OVERLAY
-==========================================================*/
-
-.popup{
-
-position:fixed;
-
-inset:0;
-
-display:flex;
-
-justify-content:center;
-
-align-items:center;
-
-background:rgba(0,0,0,.65);
-
-backdrop-filter:blur(6px);
-
-z-index:900;
-
-animation:popupFade .2s ease;
-
-}
-
-@keyframes popupFade{
-
-from{
-
-opacity:0;
-
-}
-
-to{
-
-opacity:1;
-
-}
-
-}
-
-/*==========================================================
-WINDOW
-==========================================================*/
-
-.window{
-
-width:min(900px,92vw);
-
-max-height:90vh;
-
-overflow-y:auto;
-
-padding:25px;
-
-border-radius:18px;
-
-background:
-
-linear-gradient(
-
-180deg,
-
-rgba(84,78,55,.98),
-
-rgba(54,52,38,.98)
-
-);
-
-border:3px solid var(--khaki);
-
-box-shadow:
-
-0 0 25px rgba(0,0,0,.5),
-
-0 0 10px rgba(255,210,80,.15);
-
-display:flex;
-
-flex-direction:column;
-
-gap:20px;
-
-}
-
-.window h2{
-
-text-align:center;
-
-font-size:28px;
-
-color:var(--gold);
-
-font-family:var(--font-pixel);
-
-margin-bottom:10px;
-
-}
-
-/*==========================================================
-UPGRADE
-==========================================================*/
-
-.upgradeCard{
-
-display:flex;
-
-justify-content:space-between;
-
-align-items:center;
-
-padding:18px;
-
-background:rgba(255,255,255,.05);
-
-border-radius:14px;
-
-border:1px solid rgba(255,255,255,.08);
-
-margin-bottom:12px;
-
-gap:18px;
-
-}
-
-.upgradeCard h3{
-
-color:var(--gold);
-
-font-size:20px;
-
-min-width:140px;
-
-}
-
-.upgradeCard p{
-
-font-size:15px;
-
-color:var(--gray);
-
-}
-
-.upgradeCard span{
-
-color:var(--green);
-
-font-weight:bold;
-
-}
-
-.upgradeCard button{
-
-margin-left:auto;
-
-width:130px;
-
-height:46px;
-
-border:none;
-
-border-radius:10px;
-
-background:var(--green);
-
-color:white;
-
-font-weight:bold;
-
-font-size:15px;
-
-cursor:pointer;
-
-transition:.2s;
-
-}
-
-.upgradeCard button:hover{
-
-filter:brightness(1.1);
-
-transform:translateY(-2px);
-
-}
-
-/*==========================================================
-SHOP
-==========================================================*/
-
-.shopItem{
-
-background:rgba(255,255,255,.05);
-
-padding:20px;
-
-border-radius:14px;
-
-border:1px solid rgba(255,255,255,.08);
-
-display:flex;
-
-flex-direction:column;
-
-gap:10px;
-
-margin-bottom:15px;
-
-}
-
-.shopItem h3{
-
-font-size:22px;
-
-color:var(--gold);
-
-}
-
-.shopItem p{
-
-color:var(--gray);
-
-line-height:1.6;
-
-}
-
-.shopItem ul{
-
-margin-left:22px;
-
-display:flex;
-
-flex-direction:column;
-
-gap:6px;
-
-}
-
-.shopItem li{
-
-color:var(--white);
-
-}
-
-.shopItem button{
-
-align-self:flex-end;
-
-width:160px;
-
-height:48px;
-
-border:none;
-
-border-radius:12px;
-
-background:#2f8e4f;
-
-color:white;
-
-font-size:15px;
-
-font-weight:bold;
-
-cursor:pointer;
-
-transition:.2s;
-
-}
-
-.shopItem button:hover{
-
-transform:translateY(-2px);
-
-}
-
-/*==========================================================
-MILESTONE
-==========================================================*/
-
-.milestoneReward{
-
-padding:18px;
-
-background:rgba(255,255,255,.05);
-
-border-radius:14px;
-
-border:1px solid rgba(255,255,255,.08);
-
-margin-bottom:15px;
-
-display:flex;
-
-flex-direction:column;
-
-gap:10px;
-
-}
-
-.milestoneReward h3{
-
-font-size:22px;
-
-color:var(--gold);
-
-}
-
-.milestoneReward ul{
-
-margin-left:22px;
-
-display:flex;
-
-flex-direction:column;
-
-gap:6px;
-
-}
-
-.milestoneReward button{
-
-margin-top:10px;
-
-align-self:flex-end;
-
-width:140px;
-
-height:46px;
-
-border:none;
-
-border-radius:10px;
-
-background:#ffb300;
-
-color:#222;
-
-font-size:15px;
-
-font-weight:bold;
-
-cursor:pointer;
-
-transition:.2s;
-
-}
-
-.milestoneReward button:hover{
-
-transform:translateY(-2px);
-
-}
-
-/*==========================================================
-REDEEM
-==========================================================*/
-
-#redeemInput{
-
-width:100%;
-
-height:55px;
-
-border:none;
-
-outline:none;
-
-border-radius:12px;
-
-padding:15px;
-
-font-size:17px;
-
-font-family:var(--font-main);
-
-background:#272727;
-
-color:white;
-
-margin-bottom:15px;
-
-}
-
-#redeemClaim{
-
-width:100%;
-
-height:55px;
-
-border:none;
-
-border-radius:12px;
-
-background:var(--green);
-
-color:white;
-
-font-size:18px;
-
-font-weight:bold;
-
-cursor:pointer;
-
-transition:.2s;
-
-}
-
-#redeemClaim:hover{
-
-filter:brightness(1.08);
-
-}
-
-/*==========================================================
-CLOSE BUTTON
-==========================================================*/
-
-.closePopup{
-
-margin-top:10px;
-
-height:50px;
-
-border:none;
-
-border-radius:12px;
-
-background:var(--red);
-
-color:white;
-
-font-size:17px;
-
-font-weight:bold;
-
-cursor:pointer;
-
-transition:.2s;
-
-}
-
-.closePopup:hover{
-
-filter:brightness(1.08);
-
-}
-
-/*==========================================================
-TOAST
-==========================================================*/
-
-#toast{
-
-position:fixed;
-
-left:50%;
-
-bottom:30px;
-
-transform:translateX(-50%);
-
-padding:14px 28px;
-
-border-radius:12px;
-
-background:rgba(25,25,25,.95);
-
-color:white;
-
-font-size:15px;
-
-opacity:0;
-
-pointer-events:none;
-
-transition:.3s;
-
-z-index:1000;
-
-box-shadow:var(--shadow);
-
-}
-
-#toast.show{
-
-opacity:1;
-
-bottom:45px;
-
-}
-
-/*==========================================================
-ABOUT PAGE
-==========================================================*/
-
-#aboutPage{
-
-width:100%;
-
-height:100%;
-
-overflow-y:auto;
-
-padding:30px;
-
-display:flex;
-
-flex-direction:column;
-
-gap:22px;
-
-}
-
-#aboutPage h1{
-
-text-align:center;
-
-font-size:34px;
-
-color:var(--gold);
-
-font-family:var(--font-pixel);
-
-}
-
-.version{
-
-text-align:center;
-
-color:var(--gray);
-
-font-size:15px;
-
-}
-
-.aboutCard{
-
-background:rgba(0,0,0,.35);
-
-padding:20px;
-
-border-radius:15px;
-
-border:1px solid rgba(255,255,255,.08);
-
-display:flex;
-
-flex-direction:column;
-
-gap:12px;
-
-}
-
-.aboutCard h2{
-
-color:var(--gold);
-
-font-size:24px;
-
-}
-
-.aboutCard p{
-
-line-height:1.8;
-
-font-size:15px;
-
-color:var(--white);
-
-}
-
-.aboutCard ul{
-
-margin-left:24px;
-
-display:flex;
-
-flex-direction:column;
-
-gap:8px;
-
-}
-
-.credit{
-
-padding:12px;
-
-background:rgba(255,255,255,.05);
-
-border-radius:10px;
-
-}
-
-.credit h3{
-
-font-size:18px;
-
-color:var(--gold);
-
-margin-bottom:4px;
-
-}
-
-.credit p{
-
-color:var(--gray);
-
-}
-
-.aboutButtons{
-
-display:flex;
-
-justify-content:center;
-
-gap:18px;
-
-margin:20px 0;
-
-}
-
-.aboutButtons button{
-
-width:220px;
-
-height:58px;
-
-border:none;
-
-border-radius:12px;
-
-background:var(--panel);
-
-color:white;
-
-font-size:17px;
-
-font-weight:bold;
-
-cursor:pointer;
-
-transition:.2s;
-
-}
-
-.aboutButtons button:hover{
-
-background:var(--panel2);
-
-transform:translateY(-2px);
-
-  }/*==========================================================
-    SURVIVOR APOCALYPS
-    STYLE.CSS
-    PART 3
-    GAME HUD & BATTLEFIELD
-==========================================================*/
-
-
-/*==========================================================
-GAME BACKGROUND
-==========================================================*/
-
-#gameBackground{
-
-position:fixed;
-
-inset:0;
-
-z-index:-10;
-
-overflow:hidden;
-
-}
-
-#gameBackground img{
-
-width:100%;
-
-height:100%;
-
-object-fit:cover;
-
-image-rendering:pixelated;
-
-filter:brightness(.85);
-
-}
-
-
-/*==========================================================
-HUD
-==========================================================*/
-
-#hud{
-
-position:fixed;
-
-top:0;
-left:0;
-
-width:100%;
-height:90px;
-
-padding:12px 20px;
-
-display:flex;
-
-justify-content:space-between;
-
-align-items:center;
-
-background:rgba(0,0,0,.45);
-
-backdrop-filter:blur(5px);
-
-z-index:100;
-
-box-shadow:0 3px 10px rgba(0,0,0,.45);
-
-}
-
-.hudLeft,
-.hudCenter,
-.hudRight{
-
-display:flex;
-
-gap:14px;
-
-align-items:center;
-
-}
-
-.hudBox{
-
-min-width:120px;
-
-padding:10px;
-
-border-radius:12px;
-
-background:rgba(255,255,255,.06);
-
-text-align:center;
-
-font-weight:bold;
-
-font-size:14px;
-
-}
-
-.hudBox span{
-
-display:block;
-
-margin-top:6px;
-
-font-size:18px;
-
-color:var(--gold);
-
-}
-
-.hudResource{
-
-display:flex;
-
-align-items:center;
-
-gap:8px;
-
-padding:10px;
-
-border-radius:12px;
-
-background:rgba(255,255,255,.06);
-
-}
-
-.hudResource img{
-
-width:26px;
-
-height:26px;
-
-image-rendering:pixelated;
-
-}
-
-
-/*==========================================================
-BATTLEFIELD
-==========================================================*/
-
-#battlefield{
-
-position:relative;
-
-width:100vw;
-
-height:100vh;
-
-overflow:hidden;
-
-}
-
-
-/*==========================================================
-BASE
-==========================================================*/
-
-#baseWall{
-
-position:absolute;
-
-left:0;
-
-bottom:0;
-
-width:120px;
-
-height:100%;
-
-background:linear-gradient(
-
-90deg,
-
-#5f5840,
-
-#847858
-
-);
-
-border-right:4px solid #222;
-
-display:flex;
-
-justify-content:center;
-
-align-items:flex-start;
-
-padding-top:100px;
-
-}
-
-
-/*==========================================================
-BASE HP
-==========================================================*/
-
-#baseHealthBar{
-
-width:24px;
-
-height:250px;
-
-background:#222;
-
-border-radius:15px;
-
-overflow:hidden;
-
-border:2px solid #777;
-
-}
-
-#baseHealthFill{
-
-position:absolute;
-
-bottom:0;
-
-width:20px;
-
-height:100%;
-
-background:linear-gradient(
-
-180deg,
-
-#63d449,
-
-#2e8f2d
-
-);
-
-transition:.25s linear;
-
-}
-
-
-/*==========================================================
-SOLDIER CONTAINER
-==========================================================*/
-
-#soldierContainer{
-
-position:absolute;
-
-left:135px;
-
-bottom:0;
-
-width:260px;
-
-height:100%;
-
-pointer-events:none;
-
-}
-
-
-/*==========================================================
-SOLDIER
-==========================================================*/
-
-.soldier{
-
-position:absolute;
-
-width:70px;
-
-height:70px;
-
-image-rendering:pixelated;
-
-background-size:contain;
-
-background-repeat:no-repeat;
-
-background-position:center;
-
-}
-
-
-/*==========================================================
-BULLET CONTAINER
-==========================================================*/
-
-#bulletContainer{
-
-position:absolute;
-
-inset:0;
-
-pointer-events:none;
-
-}
-
-
-/*==========================================================
-BULLET
-==========================================================*/
-
-.bullet{
-
-position:absolute;
-
-width:18px;
-
-height:5px;
-
-background:#ffc107;
-
-border-radius:20px;
-
-box-shadow:
-
-0 0 5px orange,
-
-0 0 10px yellow;
-
-}
-
-
-/*==========================================================
-ZOMBIE CONTAINER
-==========================================================*/
-
-#zombieContainer{
-
-position:absolute;
-
-inset:0;
-
-pointer-events:none;
-
-}
-
-
-/*==========================================================
-NORMAL ZOMBIE
-==========================================================*/
-
-.zombie{
-
-position:absolute;
-
-width:72px;
-
-height:72px;
-
-background-size:contain;
-
-background-repeat:no-repeat;
-
-background-position:center;
-
-image-rendering:pixelated;
-
-transition:transform .15s;
-
-}
-
-
-/*==========================================================
-BOSS
-==========================================================*/
-
-.boss{
-
-width:130px;
-
-height:130px;
-
-filter:
-
-drop-shadow(0 0 10px red)
-
-drop-shadow(0 0 20px red);
-
-animation:bossPulse 1s infinite;
-
-}
-
-@keyframes bossPulse{
-
-0%{
-
-transform:scale(1);
-
-}
-
-50%{
-
-transform:scale(1.08);
-
-}
-
-100%{
-
-transform:scale(1);
-
-}
-
-}
-
-
-/*==========================================================
-HP BAR
-==========================================================*/
-
-.hpBar{
-
-position:absolute;
-
-top:-12px;
-
-left:0;
-
-width:100%;
-
-height:6px;
-
-background:#222;
-
-border-radius:20px;
-
-overflow:hidden;
-
-}
-
-.hpFill{
-
-height:100%;
-
-width:100%;
-
-background:#5cff4b;
-
-transition:.15s linear;
-
-}
-
-
-/*==========================================================
-PARTICLE
-==========================================================*/
-
-#particleContainer{
-
-position:absolute;
-
-inset:0;
-
-pointer-events:none;
-
-overflow:hidden;
-
-}
-
-.particle{
-
-position:absolute;
-
-width:6px;
-
-height:6px;
-
-border-radius:50%;
-
-background:#ffd84f;
-
-animation:particle .45s linear forwards;
-
-}
-
-@keyframes particle{
-
-0%{
-
-opacity:1;
-
-transform:scale(1);
-
-}
-
-100%{
-
-opacity:0;
-
-transform:
-
-translateY(-18px)
-
-scale(0);
-
-}
-
-}
-
-
-/*==========================================================
-EFFECT CONTAINER
-==========================================================*/
-
-#effectContainer{
-
-position:absolute;
-
-inset:0;
-
-pointer-events:none;
-
-}
-
-
-/*==========================================================
-SKILL BAR
-==========================================================*/
-
-#skillBar{
-
-position:fixed;
-
-left:50%;
-
-bottom:15px;
-
-transform:translateX(-50%);
-
-display:flex;
-
-gap:16px;
-
-z-index:120;
-
-}
-
-#skillBar button{
-
-width:180px;
-
-height:55px;
-
-border:none;
-
-border-radius:14px;
-
-background:var(--panel);
-
-color:white;
-
-font-size:15px;
-
-font-weight:bold;
-
-cursor:pointer;
-
-transition:.2s;
-
-box-shadow:var(--shadow);
-
-}
-
-#skillBar button:hover{
-
-transform:translateY(-3px);
-
-background:var(--panel2);
-
-}
-
-#skillBar button:active{
-
-transform:scale(.96);
-
-}
-
-
-/*==========================================================
-SCREEN SHAKE
-==========================================================*/
-
-.shake{
-
-animation:shake .25s;
-
-}
-
-@keyframes shake{
-
-0%{transform:translate(0,0);}
-
-20%{transform:translate(-6px,2px);}
-
-40%{transform:translate(5px,-2px);}
-
-60%{transform:translate(-4px,3px);}
-
-80%{transform:translate(4px,-2px);}
-
-100%{transform:translate(0,0);}
-
- /*==========================================================
-    SURVIVOR APOCALYPS
-    STYLE.CSS
-    PART 4 (FINAL)
-    EFFECT • GAME OVER • RESPONSIVE
-==========================================================*/
-
-
-/*==========================================================
-BOSS WARNING
-==========================================================*/
-
-#bossWarning{
-
-position:fixed;
-
-top:50%;
-
-left:50%;
-
-transform:translate(-50%,-50%);
-
-padding:22px 60px;
-
-border:4px solid #ff3b3b;
-
-border-radius:16px;
-
-background:rgba(120,0,0,.92);
-
-color:#fff;
-
-font-size:34px;
-
-font-family:var(--font-pixel);
-
-text-shadow:
-
-0 0 8px red,
-
-0 0 20px red;
-
-z-index:999;
-
-animation:bossFlash .8s infinite;
-
-}
-
-@keyframes bossFlash{
-
-0%{
-
-opacity:1;
-
-transform:translate(-50%,-50%) scale(1);
-
-}
-
-50%{
-
-opacity:.45;
-
-transform:translate(-50%,-50%) scale(1.06);
-
-}
-
-100%{
-
-opacity:1;
-
-transform:translate(-50%,-50%) scale(1);
-
-}
-
-}
-
-
-/*==========================================================
-WAVE CLEAR
-==========================================================*/
-
-#waveClear{
-
-position:fixed;
-
-inset:0;
-
-display:flex;
-
-flex-direction:column;
-
-justify-content:center;
-
-align-items:center;
-
-gap:18px;
-
-background:rgba(0,0,0,.55);
-
-z-index:850;
-
-animation:fadeIn .25s;
-
-}
-
-#waveClear h1{
-
-font-family:var(--font-pixel);
-
-font-size:36px;
-
-color:var(--gold);
-
-text-shadow:0 0 10px gold;
-
-}
-
-#waveClear p{
-
-font-size:22px;
-
-font-weight:bold;
-
-color:var(--green);
-
-}
-
-
-/*==========================================================
-GAME OVER
-==========================================================*/
-
-#gameOver{
-
-position:fixed;
-
-inset:0;
-
-display:flex;
-
-justify-content:center;
-
-align-items:center;
-
-background:rgba(0,0,0,.78);
-
-z-index:950;
-
-}
-
-.gameOverWindow{
-
-width:min(520px,92vw);
-
-padding:28px;
-
-border-radius:18px;
-
-background:linear-gradient(
-
-180deg,
-
-#544b34,
-
-#393224
-
-);
-
-display:flex;
-
-flex-direction:column;
-
-gap:18px;
-
-text-align:center;
-
-box-shadow:0 0 30px rgba(0,0,0,.55);
-
-}
-
-.gameOverWindow h1{
-
-font-family:var(--font-pixel);
-
-font-size:28px;
-
-color:#ff5959;
-
-}
-
-.gameOverWindow p{
-
-font-size:18px;
-
-}
-
-.gameOverWindow span{
-
-color:var(--gold);
-
-font-weight:bold;
-
-}
-
-
-/*==========================================================
-GAME OVER BUTTON
-==========================================================*/
-
-.gameOverWindow button{
-
-height:54px;
-
-border:none;
-
-border-radius:12px;
-
-cursor:pointer;
-
-font-size:18px;
-
-font-weight:bold;
-
-transition:.2s;
-
-}
-
-#retryButton{
-
-background:var(--green);
-
-color:white;
-
-}
-
-#menuButton{
-
-background:var(--red);
-
-color:white;
-
-}
-
-.gameOverWindow button:hover{
-
-transform:translateY(-2px);
-
-filter:brightness(1.08);
-
-}
-
-
-/*==========================================================
-PAUSE MENU
-==========================================================*/
-
-#pauseMenu{
-
-position:fixed;
-
-inset:0;
-
-display:flex;
-
-justify-content:center;
-
-align-items:center;
-
-background:rgba(0,0,0,.7);
-
-z-index:930;
-
-}
-
-.pauseWindow{
-
-width:min(430px,90vw);
-
-padding:28px;
-
-border-radius:16px;
-
-background:linear-gradient(
-
-180deg,
-
-#564f39,
-
-#3b3628
-
-);
-
-display:flex;
-
-flex-direction:column;
-
-gap:18px;
-
-}
-
-.pauseWindow h2{
-
-text-align:center;
-
-font-family:var(--font-pixel);
-
-color:var(--gold);
-
-font-size:24px;
-
-}
-
-.pauseWindow button{
-
-height:52px;
-
-border:none;
-
-border-radius:12px;
-
-background:var(--panel);
-
-color:white;
-
-font-size:17px;
-
-font-weight:bold;
-
-cursor:pointer;
-
-transition:.2s;
-
-}
-
-.pauseWindow button:hover{
-
-background:var(--panel2);
-
-transform:translateY(-2px);
-
-}
-
-
-/*==========================================================
-NUKE EFFECT
-==========================================================*/
-
-.nukeFlash{
-
-position:absolute;
-
-inset:0;
-
-background:white;
-
-opacity:.9;
-
-pointer-events:none;
-
-animation:nukeFlash .55s forwards;
-
-}
-
-@keyframes nukeFlash{
-
-0%{
-
-opacity:1;
-
-}
-
-100%{
-
-opacity:0;
-
-}
-
-}
-
-.explosion{
-
-position:absolute;
-
-width:140px;
-
-height:140px;
-
-border-radius:50%;
-
-background:radial-gradient(
-
-circle,
-
-#fff79b,
-
-#ffb300,
-
-#ff5a00,
-
-transparent
-
-);
-
-animation:explode .5s forwards;
-
-pointer-events:none;
-
-}
-
-@keyframes explode{
-
-0%{
-
-transform:scale(.2);
-
-opacity:1;
-
-}
-
-100%{
-
-transform:scale(2.8);
-
-opacity:0;
-
-}
-
-}
-
-
-/*==========================================================
-FADE
-==========================================================*/
-
-.fadeIn{
-
-animation:fadeIn .25s;
-
-}
-
-.fadeOut{
-
-animation:fadeOut .25s forwards;
-
-}
-
-@keyframes fadeIn{
-
-from{
-
-opacity:0;
-
-}
-
-to{
-
-opacity:1;
-
-}
-
-}
-
-@keyframes fadeOut{
-
-from{
-
-opacity:1;
-
-}
-
-to{
-
-opacity:0;
-
-}
-
-}
-
-
-/*==========================================================
-SCROLLBAR
-==========================================================*/
-
-::-webkit-scrollbar{
-
-width:8px;
-
-}
-
-::-webkit-scrollbar-thumb{
-
-background:#766945;
-
-border-radius:10px;
-
+/* ==========================================================================
+   GLOBAL VARIABLES & MILITARY THEME
+   ========================================================================== */
+:root {
+    /* Color Palette - Military & Khaki Theme */
+    --color-bg-dark: #1e1e19;       /* Dark base for backgrounds */
+    --color-khaki: #c3b091;         /* Main Khaki */
+    --color-khaki-light: #d4c4a8;
+    --color-khaki-dark: #8b7d6b;
+    --color-olive: #4b5320;         /* Military Olive */
+    --color-olive-dark: #2c351c;
+    --color-danger: #8b0000;        /* Crimson red for warning/enemy */
+    --color-gold: #ffd700;          /* Coins / Premium */
+    --color-text: #f0f0f0;          /* Light text */
+    
+    /* Layout & UI */
+    --border-pixel: 4px solid var(--color-olive-dark);
+    --box-shadow-pixel: 4px 4px 0px rgba(0, 0, 0, 0.5);
+    
+    /* Default Font - Monospace / Terminal look */
+    --font-main: 'Courier New', Courier, monospace;
+}
+
+/* ==========================================================================
+   RESET & BASE STYLES
+   ========================================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    user-select: none; /* Cegah teks ter-block di mobile */
+    -webkit-tap-highlight-color: transparent;
+}
+
+html, body {
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--color-bg-dark);
+    color: var(--color-text);
+    font-family: var(--font-main);
+    font-weight: bold;
+    text-transform: uppercase;
+    overflow: hidden; /* Mencegah scrolling, game fix di layar */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Memastikan aset pixel art tetap tajam (tidak blur) */
+img {
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+}
+
+/* ==========================================================================
+   LAYOUT CONTAINERS (16:9 Landscape Target)
+   ========================================================================== */
+.menu-wrapper {
+    width: 100%;
+    max-width: 900px; /* Batasan maksimal untuk layar besar */
+    height: 100%;
+    max-height: 506px; /* Rasio 16:9 dari 900px */
+    background-color: var(--color-olive-dark);
+    background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('../assets/bgui.png'); /* Placeholder BG */
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    border: var(--border-pixel);
+    box-shadow: var(--box-shadow-pixel);
+}
+
+/* ==========================================================================
+   HEADER & FOOTER (Lobby & About)
+   ========================================================================== */
+.player-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    background-color: rgba(44, 53, 28, 0.85);
+    border-bottom: 4px solid var(--color-khaki-dark);
+}
+
+.player-profile {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.2rem;
+    color: var(--color-khaki-light);
+}
+
+.level-badge {
+    background-color: var(--color-gold);
+    color: var(--color-bg-dark);
+    padding: 2px 6px;
+    border: 2px solid #000;
+}
+
+/* XP Bar */
+.xp-bar-container {
+    width: 200px;
+    height: 20px;
+    background-color: #000;
+    border: 2px solid var(--color-khaki-dark);
+    position: relative;
+}
+
+.xp-bar-fill {
+    height: 100%;
+    background-color: #3cb371; /* Warna hijau military/XP */
+    transition: width 0.3s ease-out;
+}
+
+.bar-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 0.8rem;
+    color: #fff;
+    text-shadow: 1px 1px 0 #000;
+    white-space: nowrap;
+}
+
+.lobby-footer {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 15px;
+    background-color: #000;
+    color: var(--color-khaki-dark);
+    font-size: 0.7rem;
+    margin-top: auto;
+}
+
+/* ==========================================================================
+   MAIN CONTENT (LOBBY PANELS)
+   ========================================================================== */
+.lobby-content {
+    display: flex;
+    flex: 1;
+    padding: 15px;
+    gap: 15px;
+}
+
+/* Kiri: Resources & Stats */
+.resources-panel {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.currency-display {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.5rem;
+    color: var(--color-gold);
+    background-color: rgba(0, 0, 0, 0.6);
+    padding: 5px 10px;
+    border: 2px solid var(--color-khaki-dark);
+}
+
+.icon-small {
+    width: 24px;
+    height: 24px;
+}
+
+.materials-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+}
+
+.material-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background-color: rgba(44, 53, 28, 0.7);
+    padding: 5px;
+    border: 2px solid var(--color-khaki-dark);
+    font-size: 0.9rem;
 }
 
-::-webkit-scrollbar-track{
+.stats-box {
+    background-color: rgba(0, 0, 0, 0.7);
+    border: 2px solid var(--color-olive);
+    padding: 10px;
+    flex: 1;
+}
+
+.stats-box h3 {
+    color: var(--color-khaki);
+    border-bottom: 2px dashed var(--color-olive);
+    margin-bottom: 8px;
+    padding-bottom: 4px;
+    font-size: 1rem;
+}
 
-background:#2a2a2a;
-
-}
-
-
-/*==========================================================
-LANDSCAPE ONLY
-==========================================================*/
-
-@media screen and (orientation:portrait){
-
-body{
-
-display:flex;
-
-justify-content:center;
-
-align-items:center;
-
-background:#111;
-
-}
-
-body>*{
-
-display:none !important;
-
-}
-
-body::before{
-
-content:"🔄 Putar perangkat ke mode Landscape";
-
-display:block;
-
-color:white;
-
-font-family:var(--font-main);
-
-font-size:22px;
-
-text-align:center;
-
-padding:40px;
-
+.stats-box ul {
+    list-style: none;
+    font-size: 0.85rem;
+    line-height: 1.6;
+    color: var(--color-khaki-light);
+}
+
+/* Kanan: Navigasi */
+.nav-panel {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+/* ==========================================================================
+   BUTTONS (Pixel Art Style)
+   ========================================================================== */
+button {
+    font-family: inherit;
+    font-weight: bold;
+    text-transform: uppercase;
+    cursor: pointer;
+    border: var(--border-pixel);
+    box-shadow: var(--box-shadow-pixel);
+    transition: transform 0.1s, box-shadow 0.1s;
+}
+
+button:active {
+    transform: translate(2px, 2px);
+    box-shadow: 2px 2px 0px rgba(0, 0, 0, 0.5);
+}
+
+.btn-primary {
+    background-color: var(--color-olive);
+    color: var(--color-khaki-light);
+    padding: 15px;
+    font-size: 1.5rem;
+    border-color: var(--color-khaki);
+}
+
+.btn-large {
+    width: 100%;
 }
 
+.btn-secondary {
+    background-color: var(--color-khaki);
+    color: var(--color-bg-dark);
+    padding: 10px;
+    font-size: 1rem;
+    border-color: var(--color-khaki-dark);
 }
-
-
-/*==========================================================
-TABLET
-==========================================================*/
-
-@media(max-width:1100px){
 
-.logoBox h1{
-
-font-size:22px;
-
+.btn-action {
+    background-color: var(--color-olive-dark);
+    color: var(--color-khaki);
+    padding: 8px;
+    font-size: 0.9rem;
+    border: 2px solid var(--color-khaki-dark);
 }
-
-#playerCard{
-
-min-width:280px;
 
+.btn-danger {
+    background-color: var(--color-danger);
+    color: white;
+    padding: 10px;
+    border-color: #500000;
 }
 
-#playButton{
-
-width:280px;
-
-height:75px;
-
-font-size:20px;
-
+.menu-buttons-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    flex: 1;
 }
 
-#skillBar button{
-
-width:145px;
-
-font-size:14px;
-
+.system-buttons {
+    display: flex;
+    gap: 10px;
 }
-
+.system-buttons button {
+    flex: 1;
 }
 
-
-/*==========================================================
-PHONE LANDSCAPE
-==========================================================*/
-
-@media(max-width:900px){
-
-#header{
-
-flex-direction:column;
-
-gap:12px;
-
+/* ==========================================================================
+   MODAL POPUP
+   ========================================================================== */
+.modal {
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-color: rgba(0, 0, 0, 0.8);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 100;
 }
-
-#menuButtons{
-
-grid-template-columns:repeat(2,1fr);
 
+.modal.hidden {
+    display: none;
 }
 
-#hud{
-
-height:75px;
-
-padding:8px;
-
+.modal-content {
+    background-color: var(--color-bg-dark);
+    width: 90%;
+    max-width: 600px;
+    height: 85%;
+    border: 4px solid var(--color-khaki);
+    display: flex;
+    flex-direction: column;
 }
-
-.hudBox{
 
-min-width:90px;
-
-font-size:12px;
-
+.modal-header {
+    background-color: var(--color-olive);
+    padding: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 4px solid var(--color-khaki-dark);
 }
-
-.hudBox span{
-
-font-size:15px;
 
+.btn-close {
+    background-color: var(--color-danger);
+    color: white;
+    border: 2px solid #500000;
+    padding: 2px 8px;
+    font-size: 1.2rem;
+    box-shadow: none;
 }
 
-#baseWall{
-
-width:90px;
-
+.modal-body-content {
+    padding: 15px;
+    flex: 1;
+    overflow-y: auto;
 }
-
-#soldierContainer{
-
-left:100px;
 
+/* ==========================================================================
+   ABOUT PAGE SPECIFICS
+   ========================================================================== */
+.about-content {
+    flex-direction: row;
 }
 
-.soldier{
-
-width:60px;
-
-height:60px;
-
+.about-info-box {
+    flex: 1.5;
 }
-
-.zombie{
 
-width:60px;
-
-height:60px;
-
+.about-description {
+    font-size: 0.85rem;
+    line-height: 1.5;
+    color: var(--color-khaki-light);
+    margin-bottom: 15px;
 }
-
-.boss{
-
-width:110px;
 
-height:110px;
-
+.system-specs ul {
+    margin-top: 10px;
 }
-
-#skillBar{
 
-gap:10px;
-
+.credits-panel {
+    flex: 1;
 }
-
-#skillBar button{
 
-width:120px;
-
-height:46px;
-
-font-size:12px;
-
+.credit-group {
+    margin-bottom: 15px;
+    text-align: center;
+    background-color: rgba(44, 53, 28, 0.5);
+    padding: 10px;
+    border: 2px solid var(--color-olive);
 }
 
+.unique-tribute {
+    border-color: var(--color-gold);
 }
-
-
-/*==========================================================
-SMALL PHONE
-==========================================================*/
-
-@media(max-width:650px){
-
-.logoBox h1{
-
-font-size:18px;
 
+.credit-role {
+    font-size: 0.7rem;
+    color: var(--color-khaki-dark);
+    display: block;
+    margin-bottom: 4px;
 }
 
-.resource span{
-
-font-size:12px;
-
+.credit-name {
+    font-size: 1.2rem;
+    color: var(--color-khaki);
 }
-
-#menuButtons button{
-
-height:58px;
 
-font-size:15px;
-
+.credit-sub {
+    font-size: 0.6rem;
+    color: var(--color-text);
+    margin-top: 5px;
 }
-
-#playButton{
-
-width:240px;
-
-height:65px;
 
-font-size:18px;
-
+.credit-team-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
 }
-
-.window{
 
-padding:16px;
-
+/* ==========================================================================
+   UTILITY CLASSES
+   ========================================================================== */
+.hidden {
+    display: none !important;
 }
-
-.gameOverWindow{
 
-padding:20px;
-
+.text-highlight {
+    color: var(--color-gold);
 }
-
-.pauseWindow{
 
-padding:20px;
-
+.text-danger-flash {
+    color: var(--color-danger);
+    text-shadow: 2px 2px 0px #000;
+    animation: flash 1s infinite alternate;
 }
 
+@keyframes flash {
+    0% { opacity: 1; }
+    100% { opacity: 0.5; }
 }
-
-
-/*==========================================================
-END OF STYLE.CSS
-==========================================================*/
